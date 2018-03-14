@@ -9,6 +9,7 @@ The caret package developed by Max Kuhn is short for Classification and Regressi
 
 In this example I have tried to learn the basis of caret by implementing a few features on the Titanic dataset.
 
-##References
+References
+
 •	https://github.com/datasciencedojo/meetup/blob/master/intro_to_ml_with_r_and_caret/IntroToMachineLearning.R
 •	https://github.com/topepo/caret/tree/master/pkg/caret/R

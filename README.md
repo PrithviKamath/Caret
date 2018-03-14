@@ -6,7 +6,7 @@ The caret package developed by Max Kuhn is short for Classification and Regressi
 •	feature selection <br />
 •	model tuning using resampling <br />
 •	variable importance estimation <br />
-
+ <br />
 In this example I have tried to learn the basis of caret by implementing a few features on the Titanic dataset. <br />
 
 <b>References</b> <br />

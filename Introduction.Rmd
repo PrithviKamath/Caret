@@ -1,0 +1,116 @@
+install.packages(c("e1071", "caret", "doSNOW", "ipred", "xgboost","kernlab"))
+library(caret)
+library(kernlab)
+library(doSNOW)
+
+train <- read.csv("D:/general/Caret/train.csv", stringsAsFactors = FALSE)
+View(train)
+
+# Data Wrangling
+
+# Replace missing embarked values with mode.
+table(train$Embarked)
+train$Embarked[train$Embarked == ""] <- "S"
+
+# Add a feature for tracking missing ages.
+summary(train$Age)
+train$MissingAge <- ifelse(is.na(train$Age),"Y", "N")
+
+# Add a feature for family size.
+train$FamilySize <- 1 + train$SibSp + train$Parch
+
+# Set up factors.
+train$Survived <- as.factor(train$Survived)
+train$Pclass <- as.factor(train$Pclass)
+train$Sex <- as.factor(train$Sex)
+train$Embarked <- as.factor(train$Embarked)
+train$MissingAge <- as.factor(train$MissingAge)
+
+# Subset data to features we wish to keep/use.
+features <- c("Survived", "Pclass", "Sex", "Age", "SibSp",
+              "Parch", "Fare", "Embarked", "MissingAge",
+              "FamilySize")
+train <- train[, features]
+str(train)
+
+#.RDiag function
+.RDiag <- function (nms, sparse) {
+  n <- as.integer(length(nms))
+  d <- c(n, n)
+  dn <- list(nms, nms)
+  #   if (sparse) {
+  #     requireNamespace("Matrix", quietly = TRUE)
+  #     new("ddiMatrix", diag = "U", Dim = d, Dimnames = dn)
+  #   }
+  #   else
+  array(c(rep.int(c(1, numeric(n)), n - 1L), 1), d, dn)
+}
+
+#contr.lftr function
+contr.ltfr <- function (n, contrasts = TRUE, sparse = FALSE)
+{
+  if (is.numeric(n) && length(n) == 1L) {
+    if (n > 1L)
+      levels <- as.character(seq_len(n))
+    else stop("not enough degrees of freedom to define contrasts")
+  }
+  else {
+    levels <- as.character(n)
+    n <- length(n)
+  }
+  contr <- .RDiag(levels, sparse = sparse)
+  if (contrasts) {
+    if (n < 2L) stop(gettextf("contrasts not defined for %d degrees of freedom", n - 1L), domain = NA)
+  }
+  contr
+}
+
+# Impute Missing Ages
+# First, transform all feature to dummy variables.
+dummy.var <- caret::dummyVars(~ ., data = train[, -1])
+train.dummy <- predict(dummy.var, newdata=train[, -1])
+View(train.dummy)
+
+# Now, impute!
+pre.process <- caret::preProcess(train.dummy, method = "bagImpute")
+imputed.data <- predict(pre.process, train.dummy)
+View(imputed.data)
+
+train$Age <- imputed.data[, 6]
+View(train)
+
+# Split Data
+set.seed(54321)
+indexes <- caret::createDataPartition(train$Survived, times = 1, p = 0.7, list = FALSE)
+titanic.train <- train[indexes,]
+titanic.test <- train[-indexes,]
+
+# Examine the proportions of the Survived class lable across the datasets.
+prop.table(table(train$Survived))
+prop.table(table(titanic.train$Survived))
+prop.table(table(titanic.test$Survived))
+
+# Train Model
+train.control <- caret::trainControl(method = "repeatedcv", number = 4, repeats = 2, search = "grid")
+
+tune.grid <- expand.grid(eta = c(0.05, 0.075, 0.1), nrounds = c(50, 75, 100), max_depth = 6:8, min_child_weight = c(2.0, 2.25, 2.5), colsample_bytree = c(0.3, 0.4, 0.5), gamma = 0, subsample = 1)
+
+View(tune.grid)
+
+cl <- snow::makeCluster(2, type = "SOCK")
+doSNOW::registerDoSNOW(cl)
+
+caret.cv <- caret::train(Survived ~ ., data = titanic.train, method = "xgbTree", tuneGrid = tune.grid, trControl = train.control)
+
+snow::stopCluster(cl)
+
+caret.cv
+
+preds <- predict(caret.cv, titanic.test)
+
+caret::confusionMatrix(preds, titanic.test$Survived)
+
+
+
+
+

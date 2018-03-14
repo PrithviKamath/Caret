@@ -8,7 +8,7 @@ The caret package developed by Max Kuhn is short for Classification and Regressi
 •	variable importance estimation <br />
  <br />
 In this example I have tried to learn the basis of caret by implementing a few features on the Titanic dataset. <br />
-
+ <br />
 <b>References</b> <br />
 •	https://github.com/datasciencedojo/meetup/blob/master/intro_to_ml_with_r_and_caret/IntroToMachineLearning.R <br />
 •	https://github.com/topepo/caret/tree/master/pkg/caret/R

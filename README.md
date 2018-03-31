@@ -16,6 +16,7 @@ In this example I have tried to learn the basis of caret by implementing a few f
 The below trasforms have been implemented on Iris and PimaIndiansDiabetes datasets: <br />
 •	Scale <br />
 •	Center <br />
+•	Standardize <br />
 •	Normalize <br />
 •	Box Cox transform <br />
 •	Yeo-Johnson transform <br />

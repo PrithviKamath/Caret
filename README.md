@@ -14,14 +14,14 @@ In this example I have tried to learn the basis of caret by implementing a few f
 <b>Data Pre-Processing with Caret</b> <br />
 <br />
 The below trasforms have been implemented on Iris and PimaIndiansDiabetes datasets: <br />
-•	Scale <br />
-•	Center <br />
-•	Standardize <br />
-•	Normalize <br />
-•	Box Cox transform <br />
-•	Yeo-Johnson transform <br />
-•	Principle Component Analysis <br />
-•	Independent Componenet Analysis <br />
+•	Data scaling <br />
+•	Data centering <br />
+•	Data standardization <br />
+•	Data normalization <br />
+•	The Box-Cox Transform <br />
+•	The Yeo-Johnson Transform <br />
+•	PCA (Principle Component Analysis) Transform <br />
+•	ICA (Independent Componenet Analysis) Transform <br />
 <br />
 
 <b>References</b> <br />

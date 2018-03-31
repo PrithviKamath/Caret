@@ -9,7 +9,7 @@ The caret package developed by Max Kuhn is short for Classification and Regressi
  <br />
 In this example I have tried to learn the basis of caret by implementing a few features on the Titanic dataset. <br />
  <br />
-# Data Pre-Processing with Caret
+<b>Data Pre-Processing with Caret</b> <br />
 <br />
 The below trasform have been implemented on Iris and PimaIndiansDiabetes datasets: <br />
 •	Scale <br />
@@ -23,5 +23,5 @@ The below trasform have been implemented on Iris and PimaIndiansDiabetes dataset
 
 <b>References</b> <br />
 •	https://github.com/datasciencedojo/meetup/blob/master/intro_to_ml_with_r_and_caret/IntroToMachineLearning.R <br />
-•	https://github.com/topepo/caret/tree/master/pkg/caret/R
-•	https://machinelearningmastery.com/pre-process-your-dataset-in-r/
+•	https://github.com/topepo/caret/tree/master/pkg/caret/R <br />
+•	https://machinelearningmastery.com/pre-process-your-dataset-in-r <br />

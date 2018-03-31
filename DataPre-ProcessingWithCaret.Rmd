@@ -1,0 +1,42 @@
+# load libraries
+library(caret)
+library(mlbench)
+# load the dataset
+data(iris)
+data(PimaIndiansDiabetes)
+# summarize data
+summary(iris[,1:4])
+# calculate the pre-process parameters from the dataset
+
+#scale
+preprocessParams <- preProcess(iris[,1:4], method=c("scale"))
+
+#center
+preprocessParams <- preProcess(iris[,1:4], method=c("center"))
+
+#standardize
+preprocessParams <- preProcess(iris[,1:4], method=c("center", "scale"))
+
+#normalize
+preprocessParams <- preProcess(iris[,1:4], method=c("range"))
+
+#box-cox transform
+preprocessParams <- preProcess(PimaIndiansDiabetes[,7:8], method=c("BoxCox"))
+
+#Yeo-Johnson transform
+preprocessParams <- preProcess(PimaIndiansDiabetes[,7:8], method=c("YeoJohnson"))
+
+#Pricipal Component Analysis
+preprocessParams <- preProcess(iris, method=c("center", "scale", "pca"))
+
+#Independent Component Analysis
+preprocessParams <- preProcess(PimaIndiansDiabetes[,1:8], method=c("center", "scale", "ica"), n.comp=5)
+
+# summarize transform parameters
+print(preprocessParams)
+# transform the dataset using the parameters
+#    transformed <- predict(preprocessParams, iris[,1:4])
+#    transformed <- predict(preprocessParams, PimaIndiansDiabetes[,7:8])
+# summarize the transformed dataset
+summary(transformed)
+

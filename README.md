@@ -13,7 +13,7 @@ In this example I have tried to learn the basis of caret by implementing a few f
  <br />
 <b>Data Pre-Processing with Caret</b> <br />
 <br />
-The below trasform have been implemented on Iris and PimaIndiansDiabetes datasets: <br />
+The below trasforms have been implemented on Iris and PimaIndiansDiabetes datasets: <br />
 •	Scale <br />
 •	Center <br />
 •	Normalize <br />

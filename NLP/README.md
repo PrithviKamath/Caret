@@ -42,9 +42,10 @@ Step 17: KMeans clustering <br />
 # NLP with UDPIPE package for Hindi document
 <br />
 'VikramAndBetal_HindiDocument.txt' is placed in the same folder as that of the R document. <br />
+
 NLP is performed in the following steps: <br />
 Step 1: Import required R packages <br />
-
+<img src='https://github.com/PrithviKamath/R-Programing/blob/master/NLP/Images/tm1.png'></img> <br />
 Step 2: Loading Hindi language model using udpipe <br />
 
 Step 3: Load documents <br />

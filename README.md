@@ -1,6 +1,6 @@
 # Introduction to Machine Learning with R and Caret
  <br />
- <b>Introduction</b> <br />
+ <b>Introduction to Caret with Titanic dataset</b> <br />
  <br />
 The caret package developed by Max Kuhn is short for Classification and Regression Training. It contains a set of functions that streamline the process of creating predictive models. It contains a set of packages to perform the following functions: <br />
 •	data splitting <br />

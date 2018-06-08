@@ -40,11 +40,12 @@ NLP is performed in the following steps: <br />
 <img src='https://github.com/PrithviKamath/R-Programing/blob/master/NLP/Images/tm17.png'></img> <br />
 <br />
 <br />
-NLP with UDPIPE package for Hindi document <br />
+<h1>NLP with UDPIPE package for Hindi document</h1> <br />
 <br />
 'VikramAndBetal_HindiDocument.txt' is placed in the same folder as that of the R document. <br />
 <br />
 NLP is performed in the following steps: <br />
+<br />
 <b>Step 1</b>: Import required R packages <br />
 <img src='https://github.com/PrithviKamath/R-Programing/blob/master/NLP/Images/udpipe1.png'></img> <br />
 <b>Step 2</b>: Loading Hindi language model using udpipe <br />

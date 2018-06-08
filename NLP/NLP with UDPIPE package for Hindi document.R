@@ -8,7 +8,7 @@ model<- udpipe_download_model(language = "hindi")
 udmodel_hindi<-udpipe_load_model(file = 'hindi-ud-2.0-170801.udpipe')
 
 #reading the hindi encoded text file
-hindi <- readLines(con <- file("VikramAndBetal.txt", encoding = "UTF-8")) 
+hindi <- readLines(con <- file("VikramAndBetal_HindiDocument.txt", encoding = "UTF-8")) 
 close(con)
 unique(Encoding(hindi))
 

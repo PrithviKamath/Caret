@@ -3,7 +3,7 @@ library(caret)
 library(kernlab)
 library(doSNOW)
 
-train <- read.csv("D:/general/Caret/train.csv", stringsAsFactors = FALSE)
+train <- read.csv("Titanic_train.csv", stringsAsFactors = FALSE)
 View(train)
 
 # Data Wrangling
